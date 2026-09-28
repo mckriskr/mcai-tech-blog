@@ -72,6 +72,16 @@ archify의 격자 모드는 비유하자면 자를 직접 깎아 만드는 대�
 
 수정한 뒤, 2026년 9월 27일에 "우리 프로젝트 구조를 archify로 그려줘"라는 요청을 다시 시켜봤다. 이번엔 194초(3분 조금 넘는 시간) 만에 완성된 그림 파일(HTML)을 만들어냈고, archify의 최고 등급 검사(9개 검사 항목, 에러 0개·경고 0개 요구)를 전부 통과했다.
 
+## 실제로 완성된 MicroServices 프로젝트 구조도(직접 클릭해서 살펴보기)
+
+이 194초짜리 성공 결과가 바로 지금까지 이야기한 "우리 프로젝트"(McAI의 `MicroServices` 저장소) 실제 구조도다. 예시로 지어낸 그림이 아니라, 실제로 이 프로젝트 안에 들어 있는 서비스 10개(`mc_contracts`, `mc_router`, `mc_watch`, `mc_runtime`, `mc_context`, `mc_explorer`, `mc_resource`, `mc_state`, `mc_crawler`, `mc_source`)를 그대로 담고 있다.
+
+아래는 그 결과물을 스크린샷이 아니라 **진짜 파일 그대로** 옮겨온 것이다 — 박스를 클릭하면 그 서비스와 연결된 다른 서비스들이 강조되고, 화살표를 따라가며 어떤 서비스가 어떤 서비스를 호출하는지도 살펴볼 수 있다. 가운데 있는 `mc_runtime`(로컬 AI 모델을 실제로 돌리는 서비스)으로 대부분의 화살표가 모이는 것도 한눈에 보인다.
+
+<iframe src="/mcai-tech-blog/diagrams/microservices-architecture.html" style="width:100%;height:640px;border:1px solid #3a3a3a;border-radius:8px;" loading="lazy" title="McAI MicroServices 실제 아키텍처 다이어그램(archify로 생성)"></iframe>
+
+화면이 작게 보이면 [다이어그램을 새 탭에서 크게 열기](/mcai-tech-blog/diagrams/microservices-architecture.html)를 눌러서 확인하면 된다.
+
 ## AI가 그린 삽화와 정확한 순서도, 이 그림들이 보여주는 것
 
 아래 그림은 방금 설명한 전체 과정을 위에서 아래로 순서대로 정리한 것이다. ① AI가 "그림을 그리고 싶다"고 하면, ② 옆에 있는 "좌표 계산 도우미"(위에서 말한 `grid_layout.py`)가 정확한 위치를 미리 계산해서 건네준다. ③ AI는 그 답을 받아 그림을 그려서 문방구 도구(archify)에게 넘기고, ④ archify가 검사를 통과시키면 완성된 그림 파일이 나온다.
